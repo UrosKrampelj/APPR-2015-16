@@ -5,6 +5,13 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 
 ## Tematika
 
+V projektu bom analiziral statistiko igralcev nogometnega kluba Chelsea v sezonah od leta 1906 do 2015.
+Cilj projekta je primerjanje statističnih podatkov igralcev skozi zgodovino kluba.
+
+Podatke bom črpal s spletnega naslova: https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players
+
+
+
 Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
 napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
 
