@@ -12,6 +12,19 @@ Encoding(tabela[[1]]) <- "UTF-8"
 Encoding(tabela[[2]]) <- "UTF-8"
 Encoding(tabela[[4]]) <- "UTF-8"
 
+attach(tabela)
+kategorije <- c('Začetnik v Chelsea','Izkušeni Član','Legenda kluba')
+status <- character(nrow(tabela))
+status[Appearances <150]<-'Začetnik v Chelsea'
+status[Appearances >=150 & Appearances<300]<-'Izkušeni Član'
+status[Appearances >=300]<-'Legenda kluba'
+STATUS<-factor(status,levels=kategorije,ordered=TRUE)
+detach(tabela)
+IGRALCI <- data.frame(tabela, STATUS)
+ 
+
+
+
 
 html2 <- html_session("https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons") %>% read_html()
 html_tabela2 <- html2 %>% html_nodes(xpath="//table[3]") %>% .[[1]]
