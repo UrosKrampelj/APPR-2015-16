@@ -52,3 +52,8 @@ Encoding(tabela2[[1]]) <- "UTF-8"
  tabela2[[1, 21]] <- ("DOSEŽENI GOLI")
 
  newtabela2 <- tabela2[c(-12, -33, -34, -104, -105, -106), c(-13, -15, -16, -17, -18, -19)]
+ 
+stolpci <- newtabela2[1, ]
+colnames(newtabela2)<- stolpci
+newtabela2[[10]] <- strapplyc(newtabela2[[10]], "([0-9]+)")
+newtabela2 <- newtabela2[-c(1),]
