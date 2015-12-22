@@ -19,7 +19,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbral Analiza igralcev nogometnega kluba Chelsea. Ideja projekta je analiza vsakega igralca v zgodovini kluba od njegove ustanovitve ter uspešnost kluba tako na domačem, kot tudi na mednarodnem prizorišču. 
+Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbral Analiza igralcev nogometnega kluba Chelsea. Ideja projekta je analiza vsakega igralca v zgodovini kluba od njegove ustanovitve ter uspešnost kluba tako na domačem prizorišču. 
 
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
@@ -36,7 +36,28 @@ S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players
       status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
       
 
-Nato cem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih, v kateri je po sezonah podano:
+Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih, v kateri je po sezonah podano:
+      liga, v kateri je klub nastopal
+      
+      število zmag
+      
+      število neodločenih tekem
+      
+      število porazov
+      
+      število zadetih golov
+      
+      število prejetih golov
+      
+      točke
+      
+      nejboljši strelec kluba
+      
+      število zadetih golov najbolšega strelca
+      
+      
+      
+
 
 
 ***
