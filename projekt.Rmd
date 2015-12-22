@@ -23,10 +23,15 @@ Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbr
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
  državo iz katere igralec prihaja (imenska spremenljivka)
+ 
  njegov položaj na igrišču(imenska spremenljivka)
+ 
  leta, v katerih je nastopal za klub
+ 
  število tekem, ki jih je odigral(številska spremenljivka)
+ 
  število zadetkov za klub(številska spremenljivka)
+ 
  status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
 
 
