@@ -69,56 +69,21 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
 V tej fazi sem uvozil tabelo tabela, ki sem jo dobil tako, da sem najprej uvozil tabelo s spletne strani v obliki HTML s pomočjo ukaza read_html. Sestavljena je iz šestih stolpcev, v katerih je zapisano: Name (ime in priimek igralca - imenska spremenljivka), Nationality (država, iz katere igralec prihaja - imenska spremenljivka), Position (položaj na igrišču, na katerem najpogosteje igra - imenska spremenljivka), Chelsea career (leta, v katerih je nastopal za klub - številska spremenljivka), Appearances (število nastopov za klub - številska spremenljivka), Goals (število zadetih golov za klub - številska spremenljivka).
-Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev.
+Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev. 
 
-```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
-```
+Nato sem s spletne strani z ukazom read_html uvozil tabelo tabela2, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. 
 
-Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-hist(obcine[,4], main = "Pogostost števila naselij",
-     xlab = "Število naselij", ylab = "Število občin")
-```
 
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
 
-Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-n <- 100
-barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-plot(zemljevid, col = barve)
-title("Povprečno število otrok v družini")
-```
 
 ***
 
 # Napredna analiza podatkov
 
-```{r analiza, echo=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
 
-Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-plot(obcine[[1]], obcine[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = expression("Površina (km"^2 * ")"),
-     ylab = "Št. naselij",
-     col = barve[obcine[[7]]],
-     pch = 18)
-legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-```
 
 ***
