@@ -25,39 +25,39 @@ S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players
 
       država iz katere igralec prihaja (imenska spremenljivka)
  
-      njegov položaj na igrišču(imenska spremenljivka)
+      njegov položaj na igrišču (imenska spremenljivka)
  
-      leta, v katerih je nastopal za klub
+      leta, v katerih je nastopal za klub (številska spremenljivka)
  
-      število tekem, ki jih je odigral(številska spremenljivka)
+      število tekem, ki jih je odigral (številska spremenljivka)
  
-      število zadetkov za klub(številska spremenljivka)
+      število zadetkov za klub (številska spremenljivka)
  
       status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
       
 
-Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih, v kateri je po sezonah podano:
+Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je po sezonah podano:
       liga, v kateri je klub nastopal
       
-      število zmag
+      število zmag (številska spremenljivka)
       
-      število neodločenih tekem
+      število neodločenih tekem (številska spremenljivka)
       
-      število porazov
+      število porazov (številska spremenljivka)
       
-      število zadetih golov
+      število zadetih golov (številska spremenljivka)
       
-      število prejetih golov
+      število prejetih golov (številska spremenljivka)
       
-      točke
+      točke (številska spremenljivka)
       
-      nejboljši strelec kluba
+      nejboljši strelec kluba (številska spremenljivka)
       
-      število zadetih golov najbolšega strelca
+      število zadetih golov najbolšega strelca (številska spremenljivka)
       
       
       
-Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu.
+Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu, ob pa utrditi znanje o programiranju s programom r.
 
 
 ***
@@ -68,8 +68,8 @@ Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo 
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+V tej fazi sem uvozil tabelo tabela, ki sem jo dobil tako, da sem najprej uvozil tabelo s spletne strani v obliki HTML s pomočjo ukaza read_html. Sestavljena je iz šestih stolpcev, v katerih je zapisano: Name (ime in priimek igralca - imenska spremenljivka), Nationality (država, iz katere igralec prihaja - imenska spremenljivka), Position (položaj na igrišču, na katerem najpogosteje igra - imenska spremenljivka), Chelsea career (leta, v katerih je nastopal za klub - številska spremenljivka), Appearances (število nastopov za klub - številska spremenljivka), Goals (število zadetih golov za klub - številska spremenljivka).
+Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev.
 
 ```{r razpredelnice}
 kable(head(druzine))
