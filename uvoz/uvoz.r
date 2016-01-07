@@ -56,4 +56,4 @@ Encoding(tabela2[[1]]) <- "UTF-8"
 stolpci <- newtabela2[1, ]
 colnames(newtabela2)<- stolpci
 newtabela2[[10]] <- strapplyc(newtabela2[[10]], "([0-9]+)")
-newtabela2 <- newtabela2[c(-1), c(-11,-12)]
+newtabela2 <- newtabela2[c(-1), c(-2, -11,-12)]
