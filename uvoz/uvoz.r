@@ -1,6 +1,7 @@
 library(rvest)
 library(dplyr)
 library(gsubfn)
+library(ggplot2)
 
 html <- html_session("https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players") %>% read_html()
 html_tabela <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]]
@@ -61,12 +62,9 @@ colnames(newtabela2)<- stolpci
 newtabela2[[10]] <- strapply(newtabela2[[10]], "([0-9]+)")
 
 newtabela2 <- newtabela2[c(-1), c(-2, -11,-12)]
-newtabela2$SEZONA <- newtabela2$SEZONA %>% strapplyc("^([0-9]*)") %>% as.numeric()
-as.numeric(newtabela2$TEKME)
-as.numeric(newtabela2$ZMAGE)
-as.numeric(newtabela2$NEODLOCENO)
-as.numeric(newtabela2$PORAZ)
-as.numeric(newtabela2$`DANI GOLI`)
-as.numeric(newtabela2$`PREJETI GOLI`)
-as.numeric(newtabela2$TOCKE)
-as.numeric(newtabela2$UVRSTITEV)
+newtabela2$SEZONA <- newtabela2$SEZONA %>% strapplyc("^([0-9]*)")
+newtabela2 <- apply(newtabela2, 2, as.numeric) %>% as.data.frame()
+
+graf1 <- ggplot(data = newtabela2, aes(x=SEZONA, y=TOCKE))+geom_line(size=1, color='red')+
+  ggtitle("TOCKE")
+  
