@@ -22,8 +22,11 @@ STATUS<-factor(status,levels=kategorije,ordered=TRUE)
 detach(tabela)
 IGRALCI <- data.frame(tabela, STATUS)
 
-
-
+IGRALCI$Chelsea.zacetek <- IGRALCI$Chelsea.career %>% strapplyc("^([0-9]*)") %>% as.numeric()
+IGRALCI$Chelsea.konec <- IGRALCI$Chelsea.career %>% strapplyc("([0-9]*)$") %>% as.numeric()
+IGRALCI$Chelsea.konec[is.na(IGRALCI$Chelsea.konec)] <- 2015
+as.numeric(IGRALCI$Appearances)
+as.numeric(IGRALCI$Goals)
 
 
 html2 <- html_session("https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons") %>% read_html()
@@ -58,3 +61,4 @@ colnames(newtabela2)<- stolpci
 newtabela2[[10]] <- strapply(newtabela2[[10]], "([0-9]+)")
 
 newtabela2 <- newtabela2[c(-1), c(-2, -11,-12)]
+
