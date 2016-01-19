@@ -23,6 +23,7 @@ Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbr
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
 =======
+      ime in priimek igralca
 
       država iz katere igralec prihaja (imenska spremenljivka)
  
@@ -77,6 +78,6 @@ Nato sem s spletne strani z ukazom read_html uvozil tabelo tabela2, v kateri je 
 
 
 ***
->>>>>>> bb8fdca74fe64b8d41f192288832e42a6d4a661c
+
 
 ***
