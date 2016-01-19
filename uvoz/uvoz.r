@@ -69,8 +69,11 @@ graf1 <- ggplot(data = newtabela2, aes(x=SEZONA, y=TOČKE))+geom_line(size=1, co
   ggtitle("TOCKE V SEZONI")
 
 
-graf2 <- ggplot(data = newtabela2, aes(x=SEZONA, y=DANI.GOLI))+geom_line(size=1, color='red')+
-  ggtitle("TOCKE V SEZONI")
+graf2 <- ggplot(data = newtabela2, aes(x=SEZONA, y=DANI.GOLI))+geom_line(size=1, color='BLUE')+
+  ggtitle("DOSEŽENI GOLI V SEZONI")
 
-
+graf3 <- ggplot(data = newtabela2, aes(x=SEZONA)) +  
+                  geom_line(aes(y=TOČKE), size=1, color='red')+
+                  geom_line(aes(y=DANI.GOLI), size=1, color='blue')
+  
   
