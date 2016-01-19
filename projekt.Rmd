@@ -87,6 +87,7 @@ kable(newtabela2)
 
 
 ***
-
+# Vizualizacija
+Iz tabele 
 
 ***
