@@ -57,12 +57,12 @@ Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._
       
       
 Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu, ob pa utrditi znanje o programiranju s programom r. 
->>>>>>> bb8fdca74fe64b8d41f192288832e42a6d4a661c
+
 
 
 ***
 
-<<<<<<< HEAD
+
 =======
 # Obdelava, uvoz in čiščenje podatkov
 
