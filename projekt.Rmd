@@ -21,15 +21,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbral Analiza igralcev nogometnega kluba Chelsea. Ideja projekta je analiza vsakega igralca v zgodovini kluba od njegove ustanovitve ter uspešnost kluba tako na domačem, kot tudi na mednarodnem prizorišču. 
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
-<<<<<<< HEAD
-\begin{itemize}
-\item{državo iz katere igralec prihaja (imenska spremenljivka)}
-\item{njegov položaj na igrišču(imenska spremenljivka)}
-\item{leta, v katerih je nastopal za klub}
-\item{število tekem, ki jih je odigral(številska spremenljivka)}
-\item{število zadetkov za klub(številska spremenljivka)}
-\item{status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)}
-\end{itemize}
+
 =======
 
       država iz katere igralec prihaja (imenska spremenljivka)
