@@ -26,8 +26,8 @@ IGRALCI <- data.frame(tabela, STATUS)
 IGRALCI$Chelsea.zacetek <- IGRALCI$Chelsea.career %>% strapplyc("^([0-9]*)") %>% as.numeric()
 IGRALCI$Chelsea.konec <- IGRALCI$Chelsea.career %>% strapplyc("([0-9]*)$") %>% as.numeric()
 IGRALCI$Chelsea.konec[is.na(IGRALCI$Chelsea.konec)] <- 2015
-as.numeric(IGRALCI$Appearances)
-as.numeric(IGRALCI$Goals)
+IGRALCI$Appearances <- as.numeric(IGRALCI$Appearances)
+IGRALCI$Goals <- as.numeric(IGRALCI$Goals)
 
 
 html2 <- html_session("https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons") %>% read_html()
@@ -45,8 +45,8 @@ tabela2[[1, 3]] <- ("TEKME")
 tabela2[[1, 4]] <- ("ZMAGE")
 tabela2[[1, 5]] <- ("NEODLOČENO")
 tabela2[[1, 6]] <- ("PORAZ")
-tabela2[[1, 7]] <- ("DANI GOLI")
-tabela2[[1, 8]] <- ("PREJETI GOLI")
+tabela2[[1, 7]] <- ("DANI.GOLI")
+tabela2[[1, 8]] <- ("PREJETI.GOLI")
 tabela2[[1, 9]] <- ("TOČKE")
 tabela2[[1, 11]] <- ("POKAL FA")
 tabela2[[1, 10]] <- ("UVRSTITEV")
@@ -65,6 +65,12 @@ newtabela2 <- newtabela2[c(-1), c(-2, -11,-12)]
 newtabela2$SEZONA <- newtabela2$SEZONA %>% strapplyc("^([0-9]*)")
 newtabela2 <- apply(newtabela2, 2, as.numeric) %>% as.data.frame()
 
-graf1 <- ggplot(data = newtabela2, aes(x=SEZONA, y=TOCKE))+geom_line(size=1, color='red')+
-  ggtitle("TOCKE")
+graf1 <- ggplot(data = newtabela2, aes(x=SEZONA, y=TOČKE))+geom_line(size=1, color='red')+
+  ggtitle("TOCKE V SEZONI")
+
+
+graf2 <- ggplot(data = newtabela2, aes(x=SEZONA, y=DANI.GOLI))+geom_line(size=1, color='red')+
+  ggtitle("TOCKE V SEZONI")
+
+
   
