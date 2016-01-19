@@ -79,15 +79,20 @@ Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolp
 kable(IGRALCI)
 ```
 
-Nato sem s spletne strani z ukazom read_html uvozil tabelo tabela2, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. V tabeli je 9 stolpcev: SEZONA (letnica trajanja sezone - številska spremenljivka), TEKME (število tekem v sezoni - številska spremenljivka), ZMAGE (število zmag - številska spremenljivka), NEODLOČENO (število neodločenih rezultatov - številska spremenljivka), PORAZ (število porazov - številska spremenljivka), DANI GOLI (število zadetih golov - številska spremenljivka),  PREJETI GOLI (število prejetih golov - številska spremenljivka), TOČKE (doseženo število točk - številska spremenljivka), UVRSTITEV (končni položaj na lestvici - številska spremenljivka)
+Nato sem s spletne strani z ukazom read_html uvozil tabelo ZGODOVINA, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. V tabeli je 9 stolpcev: SEZONA (letnica trajanja sezone - številska spremenljivka), TEKME (število tekem v sezoni - številska spremenljivka), ZMAGE (število zmag - številska spremenljivka), NEODLOČENO (število neodločenih rezultatov - številska spremenljivka), PORAZ (število porazov - številska spremenljivka), DANI GOLI (število zadetih golov - številska spremenljivka),  PREJETI GOLI (število prejetih golov - številska spremenljivka), TOČKE (doseženo število točk - številska spremenljivka), UVRSTITEV (končni položaj na lestvici - številska spremenljivka)
 
 ```{r,echo=FALSE,message=FALSE}
-kable(newtabela2)
+kable(ZGODOVINA)
 ```
 
 
 ***
 # Vizualizacija
-Iz tabele 
+
+Iz tabele ZGODOVINA sem ustvaril graf1 in graf2, ter ju združil v graf3, v katerem rdeča črta prikazuje število točk, modra pa število doseženih golov v posamezni sezoni.
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+print(graf3)
+```
 
 ***
