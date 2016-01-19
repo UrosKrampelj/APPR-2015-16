@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Uroš Krampelj"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -19,67 +19,72 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbral Analiza igralcev nogometnega kluba Chelsea. Ideja projekta je analiza vsakega igralca v zgodovini kluba od njegove ustanovitve ter uspešnost kluba tako na domačem, kot tudi na mednarodnem prizorišču. 
+S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
+<<<<<<< HEAD
+\begin{itemize}
+\item{državo iz katere igralec prihaja (imenska spremenljivka)}
+\item{njegov položaj na igrišču(imenska spremenljivka)}
+\item{leta, v katerih je nastopal za klub}
+\item{število tekem, ki jih je odigral(številska spremenljivka)}
+\item{število zadetkov za klub(številska spremenljivka)}
+\item{status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)}
+\end{itemize}
+=======
+
+      država iz katere igralec prihaja (imenska spremenljivka)
+ 
+      njegov položaj na igrišču (imenska spremenljivka)
+ 
+      leta, v katerih je nastopal za klub (številska spremenljivka)
+ 
+      število tekem, ki jih je odigral (številska spremenljivka)
+ 
+      število zadetkov za klub (številska spremenljivka)
+ 
+      status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
+      
+
+Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je po sezonah podano:
+      liga, v kateri je klub nastopal
+      
+      število zmag (številska spremenljivka)
+      
+      število neodločenih tekem (številska spremenljivka)
+      
+      število porazov (številska spremenljivka)
+      
+      število zadetih golov (številska spremenljivka)
+      
+      število prejetih golov (številska spremenljivka)
+      
+      točke (številska spremenljivka)
+      
+
+      
+      
+      
+Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu, ob pa utrditi znanje o programiranju s programom r. 
+>>>>>>> bb8fdca74fe64b8d41f192288832e42a6d4a661c
+
 
 ***
 
+<<<<<<< HEAD
+=======
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+V tej fazi sem uvozil tabelo tabela, ki sem jo dobil tako, da sem najprej uvozil tabelo s spletne strani v obliki HTML s pomočjo ukaza read_html. Sestavljena je iz šestih stolpcev, v katerih je zapisano: Name (ime in priimek igralca - imenska spremenljivka), Nationality (država, iz katere igralec prihaja - imenska spremenljivka), Position (položaj na igrišču, na katerem najpogosteje igra - imenska spremenljivka), Chelsea career (leta, v katerih je nastopal za klub - številska spremenljivka), Appearances (število nastopov za klub - številska spremenljivka), Goals (število zadetih golov za klub - številska spremenljivka).
+Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev. 
 
-```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
-```
+Nato sem s spletne strani z ukazom read_html uvozil tabelo tabela2, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. V tabeli je 9 stolpcev: SEZONA (letnica trajanja sezone - številska spremenljivka), TEKME (število tekem v sezoni - številska spremenljivka), ZMAGE (število zmag - številska spremenljivka), NEODLOČENO (število neodločenih rezultatov - številska spremenljivka), PORAZ (število porazov - številska spremenljivka), DANI GOLI (število zadetih golov - številska spremenljivka),  PREJETI GOLI (število prejetih golov - številska spremenljivka), TOČKE (doseženo število točk - številska spremenljivka), UVRSTITEV (končni položaj na lestvici - številska spremenljivka)
 
-Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-hist(obcine[,4], main = "Pogostost števila naselij",
-     xlab = "Število naselij", ylab = "Število občin")
-```
 
 ***
-
-# Analiza in vizualizacija podatkov
-
-```{r vizualizacija, echo=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-n <- 100
-barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-plot(zemljevid, col = barve)
-title("Povprečno število otrok v družini")
-```
-
-***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-plot(obcine[[1]], obcine[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = expression("Površina (km"^2 * ")"),
-     ylab = "Št. naselij",
-     col = barve[obcine[[7]]],
-     pch = 18)
-legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-```
+>>>>>>> bb8fdca74fe64b8d41f192288832e42a6d4a661c
 
 ***
