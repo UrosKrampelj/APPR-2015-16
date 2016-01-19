@@ -23,7 +23,7 @@ Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbr
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
 =======
-      ime in priimek igralca
+      ime igralca (imenska spremenljivka)
 
       država iz katere igralec prihaja (imenska spremenljivka)
  
@@ -39,6 +39,7 @@ S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players
       
 
 Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je po sezonah podano:
+
       liga, v kateri je klub nastopal
       
       število zmag (številska spremenljivka)
@@ -74,7 +75,15 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 V tej fazi sem uvozil tabelo tabela, ki sem jo dobil tako, da sem najprej uvozil tabelo s spletne strani v obliki HTML s pomočjo ukaza read_html. Sestavljena je iz šestih stolpcev, v katerih je zapisano: Name (ime in priimek igralca - imenska spremenljivka), Nationality (država, iz katere igralec prihaja - imenska spremenljivka), Position (položaj na igrišču, na katerem najpogosteje igra - imenska spremenljivka), Chelsea career (leta, v katerih je nastopal za klub - številska spremenljivka), Appearances (število nastopov za klub - številska spremenljivka), Goals (število zadetih golov za klub - številska spremenljivka).
 Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev. 
 
+```{r,echo=FALSE,message=FALSE}
+kable(IGRALCI)
+```
+
 Nato sem s spletne strani z ukazom read_html uvozil tabelo tabela2, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. V tabeli je 9 stolpcev: SEZONA (letnica trajanja sezone - številska spremenljivka), TEKME (število tekem v sezoni - številska spremenljivka), ZMAGE (število zmag - številska spremenljivka), NEODLOČENO (število neodločenih rezultatov - številska spremenljivka), PORAZ (število porazov - številska spremenljivka), DANI GOLI (število zadetih golov - številska spremenljivka),  PREJETI GOLI (število prejetih golov - številska spremenljivka), TOČKE (doseženo število točk - številska spremenljivka), UVRSTITEV (končni položaj na lestvici - številska spremenljivka)
+
+```{r,echo=FALSE,message=FALSE}
+kable(newtabela2)
+```
 
 
 ***
