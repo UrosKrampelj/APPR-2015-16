@@ -14,5 +14,16 @@ svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthd
 svet1<- svet[svet$continent %in% c("Europe", "Africa","South America","Asia","North America"),]
 
 drzave <- table(IGRALCI$Nationality)
+imenadrzav<-names(drzave)
+stevilo <- unique(drzave)
+stevilo <- stevilo[order(stevilo)]
+barve <- topo.colors(length(stevilo))[match(drzave, stevilo)]
+names(barve) <- names(drzave)
+barve.zemljevid <- barve[as.character(svet1$name_long)]
+barve.zemljevid[is.na(barve.zemljevid)] <- "white"
+
+mojsvet <- svet1[svet1$name_long %in% imenadrzav,]
+koordinate <- coordinates(mojsvet)
+imena.drzav <- as.character(mojsvet$name_long)
 
 
