@@ -74,6 +74,7 @@ graf2 <- ggplot(data = newtabela2, aes(x=SEZONA, y=DANI.GOLI))+geom_line(size=1,
 
 graf3 <- ggplot(data = newtabela2, aes(x=SEZONA)) +  
                   geom_line(aes(y=TOČKE), size=1, color='red')+
-                  geom_line(aes(y=DANI.GOLI), size=1, color='blue')
+                  geom_line(aes(y=DANI.GOLI), size=1, color='blue')+
+  ggtitle("GOLI IN TOČKE V SEZONI")
   
   
