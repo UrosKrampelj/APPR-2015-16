@@ -30,7 +30,7 @@ names(barve) <- names(drzave)
 barve.zemljevid <- barve[as.character(svet1$name_long)]
 barve.zemljevid[is.na(barve.zemljevid)] <- "white"
 
-#mojsvet <- svet1[svet1$name_long %in% imenadrzav,]
+#mojsvet <- svet1[svet1$name_long %in% imenadrzav, ]
 #koordinate <- coordinates(mojsvet)
 #imena.drzav <- as.character(mojsvet$name_long)
 

@@ -23,36 +23,38 @@ Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbr
 S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
 =======
-      ime igralca (imenska spremenljivka)
 
-      država iz katere igralec prihaja (imenska spremenljivka)
+*      ime igralca (imenska spremenljivka)
+
+*      država iz katere igralec prihaja (imenska spremenljivka)
  
-      njegov položaj na igrišču (imenska spremenljivka)
+*     njegov položaj na igrišču (imenska spremenljivka)
  
-      leta, v katerih je nastopal za klub (številska spremenljivka)
+*      leta, v katerih je nastopal za klub (številska spremenljivka)
  
-      število tekem, ki jih je odigral (številska spremenljivka)
+*      število tekem, ki jih je odigral (številska spremenljivka)
  
-      število zadetkov za klub (številska spremenljivka)
+*      število zadetkov za klub (številska spremenljivka)
  
-      status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
+*      status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
+
       
 
 Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je po sezonah podano:
 
-      liga, v kateri je klub nastopal
+*      liga, v kateri je klub nastopal
       
-      število zmag (številska spremenljivka)
+*      število zmag (številska spremenljivka)
       
-      število neodločenih tekem (številska spremenljivka)
+*      število neodločenih tekem (številska spremenljivka)
       
-      število porazov (številska spremenljivka)
+*      število porazov (številska spremenljivka)
       
-      število zadetih golov (številska spremenljivka)
+*      število zadetih golov (številska spremenljivka)
       
-      število prejetih golov (številska spremenljivka)
+*      število prejetih golov (številska spremenljivka)
       
-      točke (številska spremenljivka)
+*      točke (številska spremenljivka)
       
 
       
@@ -62,7 +64,7 @@ Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo 
 
 
 
-***
+
 
 
 =======
