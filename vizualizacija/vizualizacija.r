@@ -22,6 +22,9 @@ svet1<- svet[svet$continent %in% c("Europe", "Africa","South America","Asia","No
 
 
 drzave <- table(IGRALCI$Nationality)
+names(drzave)[7] <- "New Zealand"
+names(drzave)[14] <- "Côte d'Ivoire"
+
 imenadrzav<-names(drzave)
 stevilo <- unique(drzave)
 stevilo <- stevilo[order(stevilo)]
@@ -29,6 +32,7 @@ barve <- topo.colors(length(stevilo))[match(drzave, stevilo)]
 names(barve) <- names(drzave)
 barve.zemljevid <- barve[as.character(svet1$name_long)]
 barve.zemljevid[is.na(barve.zemljevid)] <- "white"
+
 
 #mojsvet <- svet1[svet1$name_long %in% imenadrzav, ]
 #koordinate <- coordinates(mojsvet)
