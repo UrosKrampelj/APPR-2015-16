@@ -83,6 +83,7 @@ graf3 <- ggplot(data = ZGODOVINA, aes(x=SEZONA)) +
 row.names(IGRALCI)<- IGRALCI$Name
 IGRALCI <- IGRALCI[c(-1,-4)]
 IGRALCI["leta"] = IGRALCI$Chelsea.konec - IGRALCI$Chelsea.zacetek
+IGRALCI$Nationality <- IGRALCI$Nationality %>% strapplyc(".([a-zA-Z ]*)") %>% sapply(paste, collapse = "/")
 
 
   

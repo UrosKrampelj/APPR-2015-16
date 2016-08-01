@@ -22,8 +22,8 @@ svet1<- svet[svet$continent %in% c("Europe", "Africa","South America","Asia","No
 
 
 drzave <- table(IGRALCI$Nationality)
-names(drzave)[7] <- "New Zealand"
-names(drzave)[14] <- "Côte d'Ivoire"
+names(drzave)[names(drzave) == "England/New Zealand"] <- "New Zealand"
+names(drzave)[names(drzave) == "Ivory Coast"] <- "Côte d'Ivoire"
 
 imenadrzav<-names(drzave)
 stevilo <- unique(drzave)
@@ -39,7 +39,7 @@ koordinate <- coordinates(mojsvet)
 imena.drzav <- as.character(mojsvet$name_long)
 rownames(koordinate) <- imena.drzav
 
-plot(svet1, xlim=c(-180, 180), ylim=c(-33,73), col=barve.zemljevid, bg="lightblue")
+plot(svet1, xlim=c(-80, 170), ylim=c(-33,73), col=barve.zemljevid, bg="lightblue")
 
 
 
