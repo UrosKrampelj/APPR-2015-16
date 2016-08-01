@@ -30,9 +30,10 @@ IGRALCI$Appearances <- as.numeric(IGRALCI$Appearances)
 IGRALCI$Goals <- as.numeric(IGRALCI$Goals)
 IGRALCI$Nationality[87]<- IGRALCI$Nationality[167]
 
-#do tu dela
+
 html2 <- html_session("https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons") %>% read_html()
-html_tabela2 <- html2 %>% html_nodes(xpath="//table[3]") %>% .[[1]]
+html_tabela2 <- html2 %>% html_nodes(xpath="//table[@class='wikitable plainrowheaders']") %>% .[[1]]
+#html_tabela2 <- html2 %>% html_nodes(xpath="//table[3]") %>% .[[1]]
 tabela2 <- html_tabela2 %>% html_table(fill= TRUE)
 
 Encoding(tabela2[[2]]) <- "UTF-8"
