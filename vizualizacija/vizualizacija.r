@@ -43,3 +43,4 @@ plot(svet1, xlim=c(-180, 180), ylim=c(-33,73), col=barve.zemljevid, bg="lightblu
 
 
 
+

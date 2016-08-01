@@ -79,5 +79,9 @@ graf3 <- ggplot(data = ZGODOVINA, aes(x=SEZONA)) +
                   geom_line(aes(y=TOČKE), size=1, color='red')+
                   geom_line(aes(y=DANI.GOLI), size=1, color='blue')+
   ggtitle("GOLI IN TOČKE V SEZONI")
-  
+
+row.names(IGRALCI)<- IGRALCI$Name
+IGRALCI <- IGRALCI[c(-1,-4)]
+
+
   
