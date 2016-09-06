@@ -68,13 +68,15 @@ newtabela2$SEZONA <- newtabela2$SEZONA %>% strapplyc("^([0-9]*)")
 newtabela2 <- apply(newtabela2, 2, as.numeric) %>% as.data.frame()
 
 ZGODOVINA <- newtabela2
+#Število doseženih točk skozi zgodovino
 graf1 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=TOČKE))+geom_line(size=1, color='red')+
   ggtitle("TOCKE V SEZONI")
 
-
+#Število doseženih golov v posamenih sezonah
 graf2 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=DANI.GOLI))+geom_line(size=1, color='BLUE')+
   ggtitle("DOSEŽENI GOLI V SEZONI")
 
+#Število točk(rdeča) in število golov(modra) po posameznih sezonah
 graf3 <- ggplot(data = ZGODOVINA, aes(x=SEZONA)) +  
                   geom_line(aes(y=TOČKE), size=1, color='red')+
                   geom_line(aes(y=DANI.GOLI), size=1, color='blue')+
