@@ -38,3 +38,4 @@ table(p2)
 barve2
 pairs(normaliziran2, col = barve[p2])
 
+
