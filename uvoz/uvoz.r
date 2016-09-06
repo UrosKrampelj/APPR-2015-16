@@ -68,6 +68,8 @@ newtabela2$SEZONA <- newtabela2$SEZONA %>% strapplyc("^([0-9]*)")
 newtabela2 <- apply(newtabela2, 2, as.numeric) %>% as.data.frame()
 
 ZGODOVINA <- newtabela2
+row.names(ZGODOVINA)<- ZGODOVINA$SEZONA
+ZGODOVINA <- ZGODOVINA[c(-1)]
 #Število doseženih točk skozi zgodovino
 graf1 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=TOČKE))+geom_line(size=1, color='red')+
   ggtitle("TOCKE V SEZONI")
