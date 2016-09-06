@@ -32,3 +32,8 @@ razdelitev2<- hclust(matrikarazdalj2, method = "complete")
 plot(razdelitev2, hang=-1, cex=0.6, main = "USPEŠNOST2")
 rect.hclust(razdelitev2,k=4,border="red")
 #Vidimo, da so bili najbolj uspešni v letih 1983, 1988 in 2009, ko so tudi osvojili prvo mesto
+p2 <- cutree(razdelitev2, k=4)
+barve2=c("red", "green", "blue","yellow")
+table(p2)
+barve2
+pairs(normaliziran2, col = barve[p2])
