@@ -37,3 +37,4 @@ barve2=c("red", "green", "blue","yellow")
 table(p2)
 barve2
 pairs(normaliziran2, col = barve[p2])
+
