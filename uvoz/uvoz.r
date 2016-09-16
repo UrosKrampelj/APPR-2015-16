@@ -1,7 +1,4 @@
-library(rvest)
-library(dplyr)
-library(gsubfn)
-library(ggplot2)
+
 
 html <- html_session("https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players") %>% read_html()
 html_tabela <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]]
@@ -69,7 +66,7 @@ newtabela2 <- apply(newtabela2, 2, as.numeric) %>% as.data.frame()
 
 ZGODOVINA <- newtabela2
 row.names(ZGODOVINA)<- ZGODOVINA$SEZONA
-ZGODOVINA <- ZGODOVINA[c(-1)]
+
 #Število doseženih točk skozi zgodovino
 graf1 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=TOČKE))+geom_line(size=1, color='red')+
   ggtitle("TOCKE V SEZONI")
@@ -83,6 +80,18 @@ graf3 <- ggplot(data = ZGODOVINA, aes(x=SEZONA)) +
                   geom_line(aes(y=TOČKE), size=1, color='red')+
                   geom_line(aes(y=DANI.GOLI), size=1, color='blue')+
   ggtitle("GOLI IN TOČKE V SEZONI")
+
+#stevilo prejetih golov
+graf4 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=PREJETI.GOLI))+geom_line(size=1, color='ORANGE')+
+  ggtitle("PREJETI GOLI V SEZONI")
+#koncna uvrstitev
+graf5 <- ggplot(data = ZGODOVINA, aes(x=SEZONA, y=UVRSTITEV))+geom_line(size=1, color='GREEN')+
+  ggtitle("KONCNA UVSTITEV V SEZONI")
+#stevilo prejetih golov in koncna uvrstitev
+graf6 <- ggplot(data = ZGODOVINA, aes(x=SEZONA)) +  
+  geom_line(aes(y=PREJETI.GOLI), size=1, color='orange')+
+  geom_line(aes(y=UVRSTITEV), size=1, color='green')+
+  ggtitle("PREJETI GOLI IN TOČKE V SEZONI")
 
 row.names(IGRALCI)<- IGRALCI$Name
 IGRALCI <- IGRALCI[c(-1,-4)]

@@ -20,81 +20,95 @@ source("lib/libraries.r", encoding = "UTF-8")
 # Izbira teme
 
 Kot  navijač nogometnega kluba Chelsea F.C. sem za svojo temo analiziranja izbral Analiza igralcev nogometnega kluba Chelsea. Ideja projekta je analiza vsakega igralca v zgodovini kluba od njegove ustanovitve ter uspešnost kluba tako na domačem, kot tudi na mednarodnem prizorišču. 
-S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
-
-=======
-
-*      ime igralca (imenska spremenljivka)
-
-*      država iz katere igralec prihaja (imenska spremenljivka)
- 
-*     njegov položaj na igrišču (imenska spremenljivka)
- 
-*      leta, v katerih je nastopal za klub (številska spremenljivka)
- 
-*      število tekem, ki jih je odigral (številska spremenljivka)
- 
-*      število zadetkov za klub (številska spremenljivka)
- 
-*      status nogometaša v klubu (urejenostna spremenljivka, katero bom opredelil glede na število nastopov, ki jih je nogometaš dosegel v klubu)
-
-      
-
-Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je po sezonah podano:
-
-*      liga, v kateri je klub nastopal
-      
-*      število zmag (številska spremenljivka)
-      
-*      število neodločenih tekem (številska spremenljivka)
-      
-*      število porazov (številska spremenljivka)
-      
-*      število zadetih golov (številska spremenljivka)
-      
-*      število prejetih golov (številska spremenljivka)
-      
-*      točke (številska spremenljivka)
-      
-
-      
-      
-      
-Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu, ob pa utrditi znanje o programiranju s programom r. 
+Cilj projekta je ugotoviti, katerim nogometašem se je s svojimi nastopi uspelo zapisati z v klubsko zgodovino kot legende kluba in ugotoviti, katere sezone so bile bolj ali manj uspešne glede na končno uvrstitev v prvenstvu, ob tem pa utrditi znanje o programiranju s programom r. 
 
 
 
 
-
-
-=======
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
+S spletnega naslova https://en.m.wikipedia.org/wiki/List_of_Chelsea_F.C._players#List_of_players sem uvozil tabelo igralcev v obliki HTML, v kateri je za vsakega igralca podano :
 
-V tej fazi sem uvozil tabelo tabela, ki sem jo dobil tako, da sem najprej uvozil tabelo s spletne strani v obliki HTML s pomočjo ukaza read_html. Sestavljena je iz šestih stolpcev, v katerih je zapisano: Name (ime in priimek igralca - imenska spremenljivka), Nationality (država, iz katere igralec prihaja - imenska spremenljivka), Position (položaj na igrišču, na katerem najpogosteje igra - imenska spremenljivka), Chelsea career (leta, v katerih je nastopal za klub - številska spremenljivka), Appearances (število nastopov za klub - številska spremenljivka), Goals (število zadetih golov za klub - številska spremenljivka).
-Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz sedmih stolpcev. 
+
+
+* ime igralca (imenska spremenljivka)
+
+* Nationality; država iz katere igralec prihaja (imenska spremenljivka)
+ 
+* Position; njegov položaj na igrišču (imenska spremenljivka)
+ 
+* leta; stevilo let, v katerih je nastopal za klub (številska spremenljivka)
+ 
+* Appearences; število tekem, ki jih je odigral (številska spremenljivka)
+ 
+* Goals; število zadetkov za klub (številska spremenljivka)
+
+* Chelsea.zacetek; letnica, kdaj je prisel v klub (številska spremenljivka)
+
+* Chelsea.konec; letnica, kdaj je odsel iy kluba (številska spremenljivka)
+
+Zatem sem naredil urejenostni vektor z namenom, da tabeli nogometasi dodam stolpec STATUS z urejenostno spremenjivko za vsakega igralca posebej. Z ukazom data.frame sem tabeli  dodal stolpec z urejenostno spremenljivko ter novo tabelo zaradi preglednosti poimenoval IGRALCI. Tabela Igralci je tako sestavljena iz devetih stolpcev. 
+
 
 ```{r,echo=FALSE,message=FALSE}
-kable(IGRALCI)
-```
+kable(head(IGRALCI))
+``` 
 
-Nato sem s spletne strani z ukazom read_html uvozil tabelo ZGODOVINA, v kateri je zbrana statistika kluba od njegove ustanovitve. Tabeli sem izbrisal nekatere nepotrebne stolpce in vrstice ter nastavil imena stolpcev. V tabeli je 9 stolpcev: SEZONA (letnica trajanja sezone - številska spremenljivka), TEKME (število tekem v sezoni - številska spremenljivka), ZMAGE (število zmag - številska spremenljivka), NEODLOČENO (število neodločenih rezultatov - številska spremenljivka), PORAZ (število porazov - številska spremenljivka), DANI GOLI (število zadetih golov - številska spremenljivka),  PREJETI GOLI (število prejetih golov - številska spremenljivka), TOČKE (doseženo število točk - številska spremenljivka), UVRSTITEV (končni položaj na lestvici - številska spremenljivka)
+      
 
+Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._seasons uvozil tabelo uvrstitev kluba v raličnih tekmovanjih v obliki HTML, v kateri je za vsako sezono podano:
+
+* TEKME; števil odigranih tekem (številska spremenljivka)
+
+* ZMAGE; število zmag (številska spremenljivka)
+      
+* NEODLOCENO; število neodločenih tekem (številska spremenljivka)
+      
+* PORAZ; število porazov (številska spremenljivka)
+      
+* DANI.GOLI; število zadetih golov (številska spremenljivka)
+      
+* PREJETI.GOLI; število prejetih golov (številska spremenljivka)
+      
+* TOCKE; stevilo tock (številska spremenljivka)
+
+* UVRSTITEV; končna uvrstitev v tekmovanju (številska spremenljivka)
+      
 ```{r,echo=FALSE,message=FALSE}
-kable(ZGODOVINA)
+kable(head(ZGODOVINA))
 ```
 
+      
 
-***
+\pagebreak
+
 # Vizualizacija
 
 Iz tabele ZGODOVINA sem ustvaril graf1 in graf2, ter ju združil v graf3, v katerem rdeča črta prikazuje število točk, modra pa število doseženih golov v posamezni sezoni.
+
 
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 print(graf3)
 ```
 
+## Ugotovitve
+Iz grafa lahko razberemo pozitivno korelacijo med stevilom zadetih golov in stevilom tock v posamezni sezoni, kar je bilo tudi pricakovano, saj vec zadetih golov v splosnem pomeni vec zmag in posledicno vec osvojenih tock. 
+Obe opazovani kolicini od leta 1995 naprej praviloma narascata, vendar pa je opaziti nekaj vmesnih nihanj, kar pomeni, da se dosezki kluba v zadnjem obdobju izboljsujejo.
+
+\pagebreak
+Nato sem prav tako iz tabele ZGODOVINA ustvaril graf4 in graf5 ter ju zdruzil v graf6, ki prikazuje koncno uvrstitev v sezoni z zeleno in stevilo prejetih golov z oranzno crto.
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+print(graf6)
+```
+
+## Ugotovitve
+Opazimo lahko, da sta kolicini med seboj pozitivno korelirani, kar je pricakovano, saj manjse stevilo prejetih golov ponavadi pomeni tudi vec zmag in posledicno tudi visjo koncno uvrstitev.
+vidimo, da imata od sezone 1996 obe kolicini trend padanja, kar potrjuje tezo, da se dosezki kluba v zadnjem obdobju izboljsujejo.
 ***
+
+\pagebreak
+#Analiza
