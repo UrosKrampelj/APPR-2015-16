@@ -108,7 +108,17 @@ print(graf6)
 ## Ugotovitve
 Opazimo lahko, da sta kolicini med seboj pozitivno korelirani, kar je pricakovano, saj manjse stevilo prejetih golov ponavadi pomeni tudi vec zmag in posledicno tudi visjo koncno uvrstitev.
 vidimo, da imata od sezone 1996 obe kolicini trend padanja, kar potrjuje tezo, da se dosezki kluba v zadnjem obdobju izboljsujejo.
+
+```{r vizualizacija, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+print(ab)
+```
+
+\pagebreak
+
+
 ***
 
 \pagebreak
+
 #Analiza

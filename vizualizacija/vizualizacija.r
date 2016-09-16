@@ -39,7 +39,7 @@ koordinate <- coordinates(mojsvet)
 imena.drzav <- as.character(mojsvet$name_long)
 rownames(koordinate) <- imena.drzav
 
-plot(svet1, xlim=c(-50, 30), ylim=c(-33,70), col=barve.zemljevid, bg="lightblue")
+ab <- plot(svet1, xlim=c(-50, 30), ylim=c(-33,70), col=barve.zemljevid, bg="lightblue")
 text(koordinate,labels=imena.drzav,pos = 1, cex = 0.5,)
 legend("topleft", title = 'število igralcev po državah', bg = "#EEEEEE", text.font = 3,legend = stevilo, fill = topo.colors(length(stevilo)))
 
