@@ -73,7 +73,7 @@ Nato sem s spletnega naslova https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._
       
 * PREJETI.GOLI; število prejetih golov (številska spremenljivka)
       
-* TOCKE; stevilo tock (številska spremenljivka)
+* TOCKE; število točk (številska spremenljivka)
 
 * UVRSTITEV; končna uvrstitev v tekmovanju (številska spremenljivka)
       
@@ -95,30 +95,64 @@ print(graf3)
 ```
 
 ## Ugotovitve
-Iz grafa lahko razberemo pozitivno korelacijo med stevilom zadetih golov in stevilom tock v posamezni sezoni, kar je bilo tudi pricakovano, saj vec zadetih golov v splosnem pomeni vec zmag in posledicno vec osvojenih tock. 
-Obe opazovani kolicini od leta 1995 naprej praviloma narascata, vendar pa je opaziti nekaj vmesnih nihanj, kar pomeni, da se dosezki kluba v zadnjem obdobju izboljsujejo.
+Iz grafa lahko razberemo pozitivno korelacijo med številom zadetih golov in številom točk v posamezni sezoni, kar je bilo tudi pričakovano, saj vec zadetih golov v splošnem pomeni več zmag in posledicno tudi več osvojenih točk. 
+Obe opazovani količini od leta 1995 naprej praviloma naraščata, vendar pa je opaziti nekaj vmesnih nihanj, kar pomeni, da se dosežki kluba v zadnjem obdobju izboljšujejo.
 
 \pagebreak
-Nato sem prav tako iz tabele ZGODOVINA ustvaril graf4 in graf5 ter ju zdruzil v graf6, ki prikazuje koncno uvrstitev v sezoni z zeleno in stevilo prejetih golov z oranzno crto.
+Nato sem prav tako iz tabele ZGODOVINA ustvaril graf4 in graf5 ter ju zdruzil v graf6, ki prikazuje končno uvrstitev v sezoni z zeleno in število prejetih golov z oranžno črto.
 
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 print(graf6)
 ```
 
 ## Ugotovitve
-Opazimo lahko, da sta kolicini med seboj pozitivno korelirani, kar je pricakovano, saj manjse stevilo prejetih golov ponavadi pomeni tudi vec zmag in posledicno tudi visjo koncno uvrstitev.
-vidimo, da imata od sezone 1996 obe kolicini trend padanja, kar potrjuje tezo, da se dosezki kluba v zadnjem obdobju izboljsujejo.
+Opazimo lahko, da sta količini med seboj pozitivno korelirani, kar je pričakovano, saj manjše število prejetih golov ponavadi pomeni tudi več zmag in posledicno tudi višjo končno uvrstitev.
+vidimo, da imata od sezone 1996 obe količini trend padanja, kar potrjuje tezo, da se dosežki kluba v zadnjem obdobju izboljšujejo.
+
+## Zemljevid
+Iz spletne strani http://www.naturalearthdata.com/ sem uvozil zemljevid sveta.
+Iz tabele IGRALCI sem iz stolpca Nationality pridobil podatke o narodnosti igralcev, ki so igrali za Chelsea in nato vsako državo pobarval glede na število igralcev, ki prihajajo iz nje. Tiste, iz katerih je manj igralcev so temnejše, tiste, iz katerih jih je več, pa svetlejše obarvane. Tiste države, iz katerih ni nihče, so ostale bele barve. Nato sem vsaki pobarvano državo tudi poimenoval.
+
 
 ```{r vizualizacija, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 print(ab)
 ```
 
-\pagebreak
+##Ugotovitve
+Največ igralcev prihaja iz Anglije, kar je razumljivo, saj je Chelsea angleški klub in pričakovati je bilo, da bodo prevladovali domači igralci.
+Večina preostalih igralcev prihaja iz preostale evrope in Brazilije, območja, kjer je nogomet med najpopularnejšimi in najbolj razvitimi športi. Posamezni igralci prihajajo tudi iz drugih držav, kar pa je bolj izjemoma.
 
 
 ***
 
-\pagebreak
+
 
 #Analiza
+V fazi napredne analize sem želel poiskati najuspešnejšega igralca in najuspešnejšo sezono v zgodovini kluba.
+
+```{r analiza, include=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
+Za iskanje najuspešnejšega igralca sem iz tabele IGRALCI normaliziral stolpce Appearances, Goals in leta, saj so to tisti podatki, ki so najpomembnejši. Nato sem s pomočjo funkcije dist() dobil matriko razdalj, ki sem jo potem uporabil za ustvarjanje dendograma, kjer sem igralce razvrstil v štiri skupine.
+
+```{r skupine, echo=FALSE}
+razdelitev<- hclust(matrikarazdalj, method = "complete")
+plot(razdelitev, hang=-1, cex=0.6, main = "USPEŠNOST")
+rect.hclust(razdelitev,k=4,border="red")
+```
+Vidimo, da so najuspešnejši igralci v zadnji skupini.
+Da bi nedvoumno dobil najboljšega igralca, sem nato uporadil metodo enojnega povezovanja in dobil naslednji dendogram:
+
+```{r skupine1, echo=FALSE}
+razdelitev1 <- hclust(matrikarazdalj, method = "single")
+plot(razdelitev1, hang=-1, cex=0.6, main = "USPEŠNOST 1")
+rect.hclust(razdelitev1,k=4,border="red")
+```
+
+##Ugotovitve 
+Iz tega dendograma je jasno razvidno, da je najbolši igralec v zgodovini nogometnega kluba Chelsea Frank Lampard, sledijo pa mu John Terry, John Collins, Ron Harris in Peter Bonetti.
+
+
+

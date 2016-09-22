@@ -31,7 +31,8 @@ matrikarazdalj2<-dist(normaliziran2)
 razdelitev2<- hclust(matrikarazdalj2, method = "complete")
 plot(razdelitev2, hang=-1, cex=0.6, main = "USPEŠNOST2")
 rect.hclust(razdelitev2,k=4,border="red")
-#Vidimo, da so bili najbolj uspešni v letih 1983, 1988 in 2009, ko so tudi osvojili prvo mesto
+#Vidimo, da so bili najbolj uspešni v sezonah, ki so v prvi skupini, v nekaterih
+#so tudi osvojili prvenstvo
 p2 <- cutree(razdelitev2, k=4)
 barve2=c("red", "green", "blue","yellow")
 table(p2)
