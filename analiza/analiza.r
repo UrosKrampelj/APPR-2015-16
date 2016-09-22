@@ -26,7 +26,7 @@ rect.hclust(razdelitev1,k=4,border="red")
 
 #Iščemo najboljšo sezono po uspešnosti
 #Normaliziramo število zmag, danih golov in doseženih točk
-normaliziran2 <- scale(as.matrix(ZGODOVINA[c(2,5,7)]))
+normaliziran2 <- scale(as.matrix(ZGODOVINA[c(3,6,8)]))
 matrikarazdalj2<-dist(normaliziran2)
 razdelitev2<- hclust(matrikarazdalj2, method = "complete")
 plot(razdelitev2, hang=-1, cex=0.6, main = "USPEŠNOST2")
@@ -38,3 +38,4 @@ barve2=c("red", "green", "blue","yellow")
 table(p2)
 barve2
 pairs(normaliziran2, col = barve[p2])
+

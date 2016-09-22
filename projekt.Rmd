@@ -94,7 +94,7 @@ Iz tabele ZGODOVINA sem ustvaril graf1 in graf2, ter ju združil v graf3, v kate
 print(graf3)
 ```
 
-## Ugotovitve
+## Ugotovitev
 Iz grafa lahko razberemo pozitivno korelacijo med številom zadetih golov in številom točk v posamezni sezoni, kar je bilo tudi pričakovano, saj vec zadetih golov v splošnem pomeni več zmag in posledicno tudi več osvojenih točk. 
 Obe opazovani količini od leta 1995 naprej praviloma naraščata, vendar pa je opaziti nekaj vmesnih nihanj, kar pomeni, da se dosežki kluba v zadnjem obdobju izboljšujejo.
 
@@ -105,9 +105,12 @@ Nato sem prav tako iz tabele ZGODOVINA ustvaril graf4 in graf5 ter ju zdruzil v 
 print(graf6)
 ```
 
-## Ugotovitve
+## Ugotovitev
 Opazimo lahko, da sta količini med seboj pozitivno korelirani, kar je pričakovano, saj manjše število prejetih golov ponavadi pomeni tudi več zmag in posledicno tudi višjo končno uvrstitev.
 vidimo, da imata od sezone 1996 obe količini trend padanja, kar potrjuje tezo, da se dosežki kluba v zadnjem obdobju izboljšujejo.
+
+\pagebreak
+
 
 ## Zemljevid
 Iz spletne strani http://www.naturalearthdata.com/ sem uvozil zemljevid sveta.
@@ -119,13 +122,13 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 print(ab)
 ```
 
-##Ugotovitve
+##Ugotovitev
 Največ igralcev prihaja iz Anglije, kar je razumljivo, saj je Chelsea angleški klub in pričakovati je bilo, da bodo prevladovali domači igralci.
 Večina preostalih igralcev prihaja iz preostale evrope in Brazilije, območja, kjer je nogomet med najpopularnejšimi in najbolj razvitimi športi. Posamezni igralci prihajajo tudi iz drugih držav, kar pa je bolj izjemoma.
 
 
 ***
-
+\pagebreak
 
 
 #Analiza
@@ -135,7 +138,7 @@ V fazi napredne analize sem želel poiskati najuspešnejšega igralca in najuspe
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
-Za iskanje najuspešnejšega igralca sem iz tabele IGRALCI normaliziral stolpce Appearances, Goals in leta, saj so to tisti podatki, ki so najpomembnejši. Nato sem s pomočjo funkcije dist() dobil matriko razdalj, ki sem jo potem uporabil za ustvarjanje dendograma, kjer sem igralce razvrstil v štiri skupine.
+Za iskanje najuspešnejšega igralca sem iz tabele IGRALCI normaliziral stolpce Appearances, Goals in leta, saj so to tisti podatki, ki so najpomembnejši. Nato sem s pomočjo funkcije dist() dobil matriko razdalj, ki sem jo potem uporabil za ustvarjanje dendrograma, kjer sem igralce razvrstil v štiri skupine.
 
 ```{r skupine, echo=FALSE}
 razdelitev<- hclust(matrikarazdalj, method = "complete")
@@ -143,7 +146,7 @@ plot(razdelitev, hang=-1, cex=0.6, main = "USPEŠNOST")
 rect.hclust(razdelitev,k=4,border="red")
 ```
 Vidimo, da so najuspešnejši igralci v zadnji skupini.
-Da bi nedvoumno dobil najboljšega igralca, sem nato uporadil metodo enojnega povezovanja in dobil naslednji dendogram:
+Da bi nedvoumno dobil najboljšega igralca, sem nato uporadil metodo enojnega povezovanja in dobil naslednji dendrogram:
 
 ```{r skupine1, echo=FALSE}
 razdelitev1 <- hclust(matrikarazdalj, method = "single")
@@ -151,8 +154,25 @@ plot(razdelitev1, hang=-1, cex=0.6, main = "USPEŠNOST 1")
 rect.hclust(razdelitev1,k=4,border="red")
 ```
 
-##Ugotovitve 
-Iz tega dendograma je jasno razvidno, da je najbolši igralec v zgodovini nogometnega kluba Chelsea Frank Lampard, sledijo pa mu John Terry, John Collins, Ron Harris in Peter Bonetti.
+##Ugotovitev
+Iz tega dendrograma je jasno razvidno, da je najbolši igralec v zgodovini nogometnega kluba Chelsea Frank Lampard, sledijo pa mu John Terry, John Collins, Ron Harris in Peter Bonetti.
+
+Potem sem enako naredil še za matriko ZGODOVINA, kjer sem želel najti najuspešnejšo sezono.
+Normaliziral sem podatke v stolpcih ZMAGE, DANI.GOLI in TOČKE ter dobil dendrogram USPEŠNOST2.
+
+```{r skupine2, echo=FALSE}
+razdelitev2<- hclust(matrikarazdalj2, method = "complete")
+plot(razdelitev2, hang=-1, cex=0.6, main = "USPEŠNOST2")
+rect.hclust(razdelitev2,k=4,border="red")
+```
+##Ugotovitev
+Vidimo, da so najuspešnejše sezone v prvi skupini in da so letnice teh sezon večinoma po letu 2000. V tej skupini bomo našli najuspešnejšo sezono.
+S pomočjo tabele in dendrograma lahko ugotovimo, da je bila najuspešnejša sezona glede na število zmag, doseženih golov in zbranih točk sezona 2004, če privzamemo, da je število točk najpomembnejši faktor pri določanju uspešnosti. Sledi ji sezona 2005, potem pa sezone 1983, 1988 in 2009.
+
+Ugotovili smo torej, da je Frank Lampard najuspešnejši nogometaš nogometnega kluba chelsea in sezona 2004 najuspešnejša sezona v zgodovini kluba. Ni presenetljivo, da je ta sezona ena tistih, v katerih je igral tudi Frank Lampard.
+Dosežki kluba se v zadnjih letih izboljšujejo, zato lahko sklenemo, da je pred nogometnim klubom Chelsea FC še veliko uspešnih sezon.
+
+
 
 
 
